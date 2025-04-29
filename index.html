@@ -10,7 +10,6 @@
       background-color: #f4f4f4;
       margin: 0;
       padding: 20px;
-      transition: background-color 0.3s ease;
     }
     h1, h2 {
       text-align: center;
@@ -19,27 +18,23 @@
     .selector, .filters {
       text-align: center;
       margin: 20px;
-      flex-wrap: wrap;
     }
     button {
       margin: 5px;
       padding: 10px 15px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
       border: none;
       border-radius: 4px;
       background-color: #FFD700;
     }
     button:hover {
       background-color: #e6c200;
-      transform: scale(1.05);
     }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-      animation: fadeIn 0.5s ease-in-out;
     }
     th, td {
       border: 1px solid #ccc;
@@ -54,60 +49,89 @@
     .Adrian { background-color: #FFB6C1; }
     .Cris { background-color: #90EE90; }
     .Ariel { background-color: #ADD8E6; }
-    .Tania { background-color: #FFA07A; }
-    .Luis { background-color: #E6E6FA; }
     .Mario { background-color: #98FB98; }
     .hidden { display: none; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-      thead tr {
-        display: none;
-      }
-      tr {
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        overflow: hidden;
-      }
-      td {
-        padding: 12px;
-        text-align: right;
-        position: relative;
-      }
-      td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        width: 50%;
-        text-align: left;
-        font-weight: bold;
-      }
-    }
   </style>
 </head>
 <body>
-<!-- contenido original permanece sin cambios -->
+
+<h1>Horario de Coaches TABA</h1>
+<div class="selector">
+  <button onclick="showSucursal('TABA1')">TABA 1 - Fernando de la Mora</button>
+  <button onclick="showSucursal('TABA2')">TABA 2 - Luque</button>
+</div>
+
+<div id="TABA1" class="hidden">
+  <h2>TABA 1 - Fernando de la Mora</h2>
+  <div class="filters">
+    <button onclick="filterTable('TABA1', 'all')">Mostrar Todo</button>
+    <button onclick="filterTable('TABA1', 'Martin')">Martin</button>
+    <button onclick="filterTable('TABA1', 'Adrian')">Adrian</button>
+    <button onclick="filterTable('TABA1', 'Cris')">Cris</button>
+    <button onclick="filterTable('TABA1', 'Ariel')">Ariel</button>
+  </div>
+  <table id="tablaTABA1">
+    <thead>
+      <tr><th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>06:00</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td></td></tr>
+      <tr><td>07:00</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td></td></tr>
+      <tr><td>12:15</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td></td></tr>
+      <tr><td>15:00</td><td class="Cris">Cris</td><td class="Ariel">Ariel</td><td class="Cris">Cris</td><td class="Ariel">Ariel</td><td class="Cris">Cris</td><td></td></tr>
+      <tr><td>16:00</td><td class="Cris">Cris</td><td class="Cris">Cris</td><td class="Cris">Cris</td><td class="Cris">Cris</td><td class="Cris">Cris</td><td class="Cris">Cris</td></tr>
+      <tr><td>17:00</td><td class="Ariel">Ariel</td><td class="Cris">Cris</td><td class="Ariel">Ariel</td><td class="Cris">Cris</td><td class="Ariel">Ariel</td><td class="Cris">Cris</td></tr>
+      <tr><td>18:00</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td></td></tr>
+      <tr><td>19:00</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td></td></tr>
+      <tr><td>20:00</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td class="Martin">Martin</td><td></td></tr>
+      <tr><td>21:00</td><td class="Ariel">Ariel</td><td class="Ariel">Ariel</td><td class="Ariel">Ariel</td><td class="Ariel">Ariel</td><td class="Ariel">Ariel</td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="TABA2" class="hidden">
+  <h2>TABA 2 - Luque</h2>
+  <div class="filters">
+    <button onclick="filterTable('TABA2', 'all')">Mostrar Todo</button>
+    <button onclick="filterTable('TABA2', 'Mario')">Mario</button>
+    <button onclick="filterTable('TABA2', 'Adrian')">Adrian</button>
+    <button onclick="filterTable('TABA2', 'Cris')">Cris</button>
+  </div>
+  <table id="tablaTABA2">
+    <thead>
+      <tr><th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>06:00</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td></td></tr>
+      <tr><td>07:00</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td></td></tr>
+      <tr><td>10:00</td><td></td><td></td><td></td><td></td><td></td><td class="Mario">Mario</td></tr>
+      <tr><td>12:15</td><td class="Mario">Mario</td><td class="Cris">Cris</td><td class="Mario">Mario</td><td class="Cris">Cris</td><td class="Mario">Mario</td><td></td></tr>
+      <tr><td>15:00</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td></td></tr>
+      <tr><td>16:00</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Mario">Mario</td></tr>
+      <tr><td>17:00</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td class="Adrian">Adrian</td><td></td></tr>
+      <tr><td>18:00</td><td class="Cris">Cris</td><td class="Adrian">Adrian</td><td class="Cris">Cris</td><td class="Adrian">Adrian</td><td class="Cris">Cris</td><td></td></tr>
+      <tr><td>19:00</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td></td></tr>
+      <tr><td>20:00</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td></td></tr>
+      <tr><td>21:00</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td class="Mario">Mario</td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
 <script>
 function showSucursal(sucursal) {
-  document.getElementById('TABA1').style.display = (sucursal === 'TABA1') ? 'block' : 'none';
-  document.getElementById('TABA2').style.display = (sucursal === 'TABA2') ? 'block' : 'none';
+  document.getElementById('TABA1').classList.add('hidden');
+  document.getElementById('TABA2').classList.add('hidden');
+  document.getElementById(sucursal).classList.remove('hidden');
 }
 
 function filterTable(sucursal, coach) {
   const table = document.querySelector(`#tabla${sucursal}`);
+  if (!table) return;
   const rows = table.querySelectorAll("tbody tr");
   rows.forEach(row => {
     const cells = row.querySelectorAll("td");
-    let show = false;
-    if (coach === 'all') {
-      show = true;
-    } else {
+    let show = coach === 'all';
+    if (!show) {
       cells.forEach(cell => {
         if (cell.classList.contains(coach)) {
           show = true;
@@ -118,5 +142,6 @@ function filterTable(sucursal, coach) {
   });
 }
 </script>
+
 </body>
 </html>
