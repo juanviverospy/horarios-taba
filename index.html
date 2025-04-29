@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario Coaches TABA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s ease;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    .selector, .filters {
+      text-align: center;
+      margin: 20px;
+      flex-wrap: wrap;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      border-radius: 4px;
+      background-color: #FFD700;
+    }
+    button:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #FFD700;
+      color: black;
+    }
+    .Martin { background-color: #FFD700; }
+    .Adrian { background-color: #FFB6C1; }
+    .Cris { background-color: #90EE90; }
+    .Ariel { background-color: #ADD8E6; }
+    .Tania { background-color: #FFA07A; }
+    .Luis { background-color: #E6E6FA; }
+    .Mario { background-color: #98FB98; }
+    .hidden { display: none; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        display: none;
+      }
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      td {
+        padding: 12px;
+        text-align: right;
+        position: relative;
+      }
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 50%;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- contenido original permanece sin cambios -->
+<script>
+function showSucursal(sucursal) {
+  document.getElementById('TABA1').style.display = (sucursal === 'TABA1') ? 'block' : 'none';
+  document.getElementById('TABA2').style.display = (sucursal === 'TABA2') ? 'block' : 'none';
+}
+
+function filterTable(sucursal, coach) {
+  const table = document.querySelector(`#tabla${sucursal}`);
+  const rows = table.querySelectorAll("tbody tr");
+  rows.forEach(row => {
+    const cells = row.querySelectorAll("td");
+    let show = false;
+    if (coach === 'all') {
+      show = true;
+    } else {
+      cells.forEach(cell => {
+        if (cell.classList.contains(coach)) {
+          show = true;
+        }
+      });
+    }
+    row.style.display = show ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
